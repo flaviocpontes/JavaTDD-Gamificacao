@@ -1,12 +1,16 @@
 package main;
 
+import java.util.HashMap;
+
 public class Armazenamento {
 
-    public void gravaPontuacao(String usuario, String tipo, int quantidade) {
+    private HashMap<String, Integer> pontuacao = new HashMap<String, Integer>();
 
+    public void gravaPontuacao(String usuario, String tipo, int quantidade) {
+        pontuacao.put(usuario, quantidade);
     }
 
     public int lePontuacao(String usuario, String tipo) {
-        return 10;
+        return pontuacao.get(usuario);
     }
 }

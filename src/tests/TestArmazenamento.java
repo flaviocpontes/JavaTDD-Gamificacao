@@ -7,6 +7,9 @@ import main.UsuarioNaoEncontradoException;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestArmazenamento {
 
     Armazenamento arm;
@@ -41,6 +44,16 @@ public class TestArmazenamento {
     @Test(expected = UsuarioNaoEncontradoException.class)
     public void testeLeUsuarioInexistente() throws UsuarioNaoEncontradoException {
         arm.lePontuacao("guerra", "estrela");
+    }
+
+    @Test
+    public void recuperaUsuariosComPontuacao(){
+        arm.gravaPontuacao("guerra", "estrela", 10);
+        arm.gravaPontuacao("fernandes", "estrela", 14);
+        List<String> usuariosPontuados = new ArrayList<>();
+        usuariosPontuados.add("guerra");
+        usuariosPontuados.add("fernandes");
+        assertTrue(usuariosPontuados.equals(arm.pegaUsuariosPontuados()));
     }
 
 }

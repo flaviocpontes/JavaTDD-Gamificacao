@@ -1,6 +1,8 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Armazenamento {
 
@@ -18,5 +20,13 @@ public class Armazenamento {
         pontosTipo = pontuacao.get(usuario);
         if (pontosTipo == null) throw new UsuarioNaoEncontradoException();
         return pontosTipo.get(tipo);
+    }
+
+    public List<String> pegaUsuariosPontuados() {
+        ArrayList<String> usuarios = new ArrayList<>();
+        for (String usuario : pontuacao.keySet()) {
+            usuarios.add(usuario);
+        }
+        return usuarios;
     }
 }

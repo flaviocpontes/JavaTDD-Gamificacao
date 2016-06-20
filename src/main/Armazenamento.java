@@ -1,9 +1,6 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Armazenamento {
 
@@ -32,6 +29,10 @@ public class Armazenamento {
     }
 
     public Set<String> pegaTiposDePontos() {
-        return null;
+        HashSet<String> tipos = new HashSet<>();
+        for (String usuario : pontuacao.keySet()) {
+            tipos.addAll(pontuacao.get(usuario).keySet());
+        }
+        return tipos;
     }
 }

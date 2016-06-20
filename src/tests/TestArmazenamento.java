@@ -20,35 +20,35 @@ public class TestArmazenamento {
 
     @Test
     public void testeArmazenandoUmTipoEmUmUsuario() throws UsuarioNaoEncontradoException {
-        arm.gravaPontuacao("guerra", "estrela", 10);
-        assertEquals(arm.lePontuacao("guerra", "estrela"), 10);
+        arm.inserePontuacao("guerra", "estrela", 10);
+        assertEquals(arm.pegaPontuacaoUsuario("guerra", "estrela"), 10);
     }
 
     @Test
     public void testeArmazenandoUmTipoEmDoisUsuarios() throws UsuarioNaoEncontradoException {
-        arm.gravaPontuacao("guerra", "estrela", 10);
-        arm.gravaPontuacao("fernandes", "estrela", 14);
-        assertEquals(arm.lePontuacao("guerra", "estrela"), 10);
-        assertEquals(arm.lePontuacao("fernandes", "estrela"), 14);
+        arm.inserePontuacao("guerra", "estrela", 10);
+        arm.inserePontuacao("fernandes", "estrela", 14);
+        assertEquals(arm.pegaPontuacaoUsuario("guerra", "estrela"), 10);
+        assertEquals(arm.pegaPontuacaoUsuario("fernandes", "estrela"), 14);
     }
 
     @Test
     public void testeDoisTiposEmUmUsuario() throws UsuarioNaoEncontradoException {
-        arm.gravaPontuacao("guerra", "estrela", 10);
-        arm.gravaPontuacao("guerra", "moedas", 50);
-        assertEquals(arm.lePontuacao("guerra", "estrela"), 10);
-        assertEquals(arm.lePontuacao("guerra", "moedas"), 50);
+        arm.inserePontuacao("guerra", "estrela", 10);
+        arm.inserePontuacao("guerra", "moedas", 50);
+        assertEquals(arm.pegaPontuacaoUsuario("guerra", "estrela"), 10);
+        assertEquals(arm.pegaPontuacaoUsuario("guerra", "moedas"), 50);
     }
 
     @Test(expected = UsuarioNaoEncontradoException.class)
     public void testeLeUsuarioInexistente() throws UsuarioNaoEncontradoException {
-        arm.lePontuacao("guerra", "estrela");
+        arm.pegaPontuacaoUsuario("guerra", "estrela");
     }
 
     @Test
     public void recuperaUsuariosComPontuacao(){
-        arm.gravaPontuacao("guerra", "estrela", 10);
-        arm.gravaPontuacao("fernandes", "estrela", 14);
+        arm.inserePontuacao("guerra", "estrela", 10);
+        arm.inserePontuacao("fernandes", "estrela", 14);
         List<String> usuariosPontuados = new ArrayList<>();
         usuariosPontuados.add("guerra");
         usuariosPontuados.add("fernandes");
@@ -57,11 +57,11 @@ public class TestArmazenamento {
 
     @Test
     public void recuperaTiposPontuacao(){
-        arm.gravaPontuacao("guerra", "estrela", 10);
-        arm.gravaPontuacao("guerra", "moeda", 10);
-        arm.gravaPontuacao("fernandes", "estrela", 14);
-        arm.gravaPontuacao("fernandes", "curtida", 14);
-        arm.gravaPontuacao("fernandes", "comentario", 14);
+        arm.inserePontuacao("guerra", "estrela", 10);
+        arm.inserePontuacao("guerra", "moeda", 10);
+        arm.inserePontuacao("fernandes", "estrela", 14);
+        arm.inserePontuacao("fernandes", "curtida", 14);
+        arm.inserePontuacao("fernandes", "comentario", 14);
         Set<String> tiposDePontuacao = new HashSet<>();
         tiposDePontuacao.add("estrela");
         tiposDePontuacao.add("moeda");

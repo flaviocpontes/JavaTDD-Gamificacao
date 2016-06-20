@@ -3,6 +3,7 @@ package main;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class Armazenamento {
 
@@ -28,5 +29,9 @@ public class Armazenamento {
             usuarios.add(usuario);
         }
         return usuarios;
+    }
+
+    public Set<String> pegaTiposDePontos() {
+        return null;
     }
 }

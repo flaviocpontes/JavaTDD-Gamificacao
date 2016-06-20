@@ -7,8 +7,7 @@ import main.UsuarioNaoEncontradoException;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class TestArmazenamento {
 
@@ -54,6 +53,21 @@ public class TestArmazenamento {
         usuariosPontuados.add("guerra");
         usuariosPontuados.add("fernandes");
         assertTrue(usuariosPontuados.equals(arm.pegaUsuariosPontuados()));
+    }
+
+    @Test
+    public void recuperaTiposPontuacao(){
+        arm.gravaPontuacao("guerra", "estrela", 10);
+        arm.gravaPontuacao("guerra", "moeda", 10);
+        arm.gravaPontuacao("fernandes", "estrela", 14);
+        arm.gravaPontuacao("fernandes", "curtida", 14);
+        arm.gravaPontuacao("fernandes", "comentario", 14);
+        Set<String> tiposDePontuacao = new HashSet<>();
+        tiposDePontuacao.add("estrela");
+        tiposDePontuacao.add("moeda");
+        tiposDePontuacao.add("curtida");
+        tiposDePontuacao.add("comentario");
+        assertTrue(tiposDePontuacao.equals(arm.pegaTiposDePontos()));
     }
 
 }

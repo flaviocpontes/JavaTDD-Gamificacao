@@ -37,4 +37,9 @@ public class TestPlacar {
         assertTrue(arm.verificaChamadaTiposDePontos());
     }
 
+    @Test
+    public void testRanking(){
+
+    }
+
 }

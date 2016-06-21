@@ -58,6 +58,18 @@ public class MockArmazenamento implements InterfaceArmazenamento {
             if (tipo.equals("folha")) return 55;
             if (tipo.equals("acepipes")) return 0;
         }
+        if (usuario.equals("guerra")) {
+            if (tipo.equals("estrela")) return 18;
+            if (tipo.equals("moeda")) return 0;
+            if (tipo.equals("folha")) return 25;
+            if (tipo.equals("acepipes")) return 15;
+        }
+        if (usuario.equals("rodrigo")) {
+            if (tipo.equals("estrela")) return 73;
+            if (tipo.equals("moeda")) return 0;
+            if (tipo.equals("folha")) return 0;
+            if (tipo.equals("acepipes")) return 0;
+        }
         return 0;
     }
 

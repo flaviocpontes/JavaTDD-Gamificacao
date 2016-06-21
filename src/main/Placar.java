@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Placar {
@@ -27,4 +28,7 @@ public class Placar {
         return resultado;
     }
 
+    public ArrayList<HashMap<String, Integer>> ranking(String tipo){
+        return null;
+    }
 }

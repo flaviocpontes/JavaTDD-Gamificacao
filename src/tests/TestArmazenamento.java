@@ -70,4 +70,19 @@ public class TestArmazenamento {
         assertTrue(tiposDePontuacao.equals(arm.pegaTiposDePontos()));
     }
 
+    @Test
+    public void testaPersistenciaPontuacao() throws UsuarioNaoEncontradoException {
+        arm.inserePontuacao("guerra", "estrela", 5);
+        arm.inserePontuacao("guerra", "moeda", 6);
+        arm.inserePontuacao("fernandes", "estrela", 7);
+        arm.inserePontuacao("fernandes", "curtida", 8);
+        arm.inserePontuacao("fernandes", "comentario", 9);
+        Armazenamento arm2 = new Armazenamento();
+        assertEquals(arm2.pegaPontuacaoUsuario("guerra", "estrela"), 5);
+        assertEquals(arm2.pegaPontuacaoUsuario("guerra", "moeda"), 6);
+        assertEquals(arm2.pegaPontuacaoUsuario("fernandes", "estrela"), 7);
+        assertEquals(arm2.pegaPontuacaoUsuario("fernandes", "curtida"), 8);
+        assertEquals(arm2.pegaPontuacaoUsuario("fernandes", "comentario"), 9);
+    }
+
 }

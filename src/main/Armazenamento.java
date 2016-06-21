@@ -5,13 +5,14 @@ import java.beans.XMLEncoder;
 import java.io.*;
 import java.util.*;
 
-public class Armazenamento {
+public class Armazenamento implements InterfaceArmazenamento {
 
     private HashMap<String, HashMap<String, Integer>> _pontuacao = new HashMap<>();
-    private static final File file = new File("pontuacao.xml");
+    private File file;
 
     @SuppressWarnings("unchecked")
-    public Armazenamento(){
+    public Armazenamento(String filename){
+        file = new File(filename);
         if (file.exists() && !file.isDirectory()) {
             try {
                 FileInputStream f = new FileInputStream(file);
@@ -45,6 +46,7 @@ public class Armazenamento {
         gravaInformacoes();
     }
 
+    @Override
     public int pegaPontuacaoUsuario(String usuario, String tipo) throws UsuarioNaoEncontradoException {
         HashMap<String, Integer> pontosTipo = _pontuacao.get(usuario);
         if (pontosTipo == null) throw new UsuarioNaoEncontradoException();

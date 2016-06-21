@@ -24,7 +24,7 @@ public class TestArmazenamento {
         } catch (IOException e) {
             System.out.println("Nao é possível deletar o arquivo de testes");
         }
-        arm = new Armazenamento();
+        arm = new Armazenamento("pontuacao.xml");
     }
 
     @Test
@@ -86,7 +86,7 @@ public class TestArmazenamento {
         arm.inserePontuacao("fernandes", "estrela", 7);
         arm.inserePontuacao("fernandes", "curtida", 8);
         arm.inserePontuacao("fernandes", "comentario", 9);
-        Armazenamento arm2 = new Armazenamento();
+        Armazenamento arm2 = new Armazenamento("pontuacao.xml");
         assertEquals(arm2.pegaPontuacaoUsuario("guerra", "estrela"), 5);
         assertEquals(arm2.pegaPontuacaoUsuario("guerra", "moeda"), 6);
         assertEquals(arm2.pegaPontuacaoUsuario("fernandes", "estrela"), 7);

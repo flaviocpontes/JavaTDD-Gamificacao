@@ -40,9 +40,9 @@ public class MockArmazenamento implements InterfaceArmazenamento {
         return false;
     }
 
-    private boolean chamadaTiposDePontos = false;
+    private boolean chamadaVerificaTiposDePontos = false;
     public boolean verificaChamadaTiposDePontos(){
-        return chamadaTiposDePontos;
+        return chamadaVerificaTiposDePontos;
     }
 
     @Override
@@ -52,6 +52,12 @@ public class MockArmazenamento implements InterfaceArmazenamento {
 
     @Override
     public int pegaPontuacaoUsuario(String usuario, String tipo) throws UsuarioNaoEncontradoException {
+        if (usuario.equals("guerra")) {
+            if (tipo.equals("estrela")) return 10;
+            if (tipo.equals("moeda")) return 8;
+            if (tipo.equals("folha")) return 55;
+            if (tipo.equals("acepipes")) return 0;
+        }
         return 0;
     }
 
@@ -62,12 +68,13 @@ public class MockArmazenamento implements InterfaceArmazenamento {
 
     @Override
     public Set<String> pegaTiposDePontos() {
-        chamadaTiposDePontos = true;
+        chamadaVerificaTiposDePontos = true;
         HashSet<String> s = new HashSet<>();
         s.add("estrela");
         s.add("moeda");
         s.add("folha");
         s.add("curtida");
+        s.add("acepipes");
         return s;
     }
 }

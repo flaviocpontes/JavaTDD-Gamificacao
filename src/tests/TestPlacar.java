@@ -25,6 +25,7 @@ public class TestPlacar {
         p.registraPontuacao("guerra", "estrela", 10);
         p.registraPontuacao("guerra", "moeda", 8);
         p.registraPontuacao("guerra", "folha", 55);
+        p.registraPontuacao("guerra", "acepipes", 0);
         HashMap<String, Integer> h = new HashMap<>();
         h.put("estrela", 10);
         h.put("moeda", 8);
@@ -32,7 +33,7 @@ public class TestPlacar {
         assertTrue(arm.veriricaChamadaInsercao("guerra", "estrela", 10));
         assertTrue(arm.veriricaChamadaInsercao("guerra", "moeda", 8));
         assertTrue(arm.veriricaChamadaInsercao("guerra", "folha", 55));
-        assertEquals(p.recuperaPontuacaoUsuario("guerra"), h);
+        assertEquals(h, p.recuperaPontuacaoUsuario("guerra"));
         assertTrue(arm.verificaChamadaTiposDePontos());
     }
 

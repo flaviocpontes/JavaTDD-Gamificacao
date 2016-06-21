@@ -7,14 +7,23 @@ import main.UsuarioNaoEncontradoException;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.*;
 
 public class TestArmazenamento {
 
-    Armazenamento arm;
+    private Armazenamento arm;
 
     @Before
     public void inicializaTeste(){
+        File file = new File("pontuacao.xml");
+        try {
+            Files.deleteIfExists(file.toPath());
+        } catch (IOException e) {
+            System.out.println("Nao é possível deletar o arquivo de testes");
+        }
         arm = new Armazenamento();
     }
 

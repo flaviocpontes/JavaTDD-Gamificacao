@@ -4,6 +4,7 @@ import main.InterfaceArmazenamento;
 import main.UsuarioNaoEncontradoException;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -39,6 +40,11 @@ public class MockArmazenamento implements InterfaceArmazenamento {
         return false;
     }
 
+    private boolean chamadaTiposDePontos = false;
+    public boolean verificaChamadaTiposDePontos(){
+        return chamadaTiposDePontos;
+    }
+
     @Override
     public void inserePontuacao(String usuario, String tipo, int quantidade) {
         chamadasInsercao.add(new ChamadaInsercao(usuario, tipo, quantidade));
@@ -56,6 +62,12 @@ public class MockArmazenamento implements InterfaceArmazenamento {
 
     @Override
     public Set<String> pegaTiposDePontos() {
-        return null;
+        chamadaTiposDePontos = true;
+        HashSet<String> s = new HashSet<>();
+        s.add("estrela");
+        s.add("moeda");
+        s.add("folha");
+        s.add("curtida");
+        return s;
     }
 }

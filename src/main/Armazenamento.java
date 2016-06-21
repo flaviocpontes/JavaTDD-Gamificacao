@@ -50,7 +50,8 @@ public class Armazenamento implements InterfaceArmazenamento {
     public int pegaPontuacaoUsuario(String usuario, String tipo) throws UsuarioNaoEncontradoException {
         HashMap<String, Integer> pontosTipo = _pontuacao.get(usuario);
         if (pontosTipo == null) throw new UsuarioNaoEncontradoException();
-        return pontosTipo.get(tipo);
+        if (pontosTipo.get(tipo) != null) return pontosTipo.get(tipo);
+        return 0;
     }
 
     public List<String> pegaUsuariosPontuados() {
